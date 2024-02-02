@@ -1,6 +1,7 @@
 import express from "express";
 import "dotenv/config";
 import cors from "cors";
+import BookRoutes from "./routes/books.routes.js";
 const app = express();
 
 // initialize the server port
@@ -18,10 +19,8 @@ app.use((req, res, next) => {
   next();
 });
 
-// default api path
-app.get("/api", (req, res) => {
-  res.send("Library management system API");
-});
+// books routes
+app.use("/api/books", BookRoutes);
 
 // Start the server
 app.listen(PORT, () => {
