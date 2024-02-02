@@ -2,7 +2,11 @@ import express from "express";
 import "dotenv/config";
 import cors from "cors";
 import BookRoutes from "./routes/books.routes.js";
+import databaseConnect from "./configs/dbconnect.js";
 const app = express();
+
+// connect with the database
+databaseConnect();
 
 // initialize the server port
 const PORT = process.env.PORT || 9000;
