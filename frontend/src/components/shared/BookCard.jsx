@@ -4,7 +4,7 @@ import { CalendarRange, User, MapPin, Check, X } from "lucide-react";
 
 const BookCard = (props) => {
   return (
-    <Link to={`/`}>
+    <Link to={`/books/dadasdaweqe`}>
       <Card className="w-[350px] flex flex-col items-center">
         <img src="/vite.svg" width={100} className="p-5 bg-cover" />
         <CardHeader>
