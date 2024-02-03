@@ -26,16 +26,12 @@ const bookSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    publisher: {
-      type: String,
-      required: true,
-    },
     tags: [String],
     numOfPages: {
       type: Number,
       required: true,
     },
-    Location: {
+    location: {
       type: String,
       required: true,
     },
