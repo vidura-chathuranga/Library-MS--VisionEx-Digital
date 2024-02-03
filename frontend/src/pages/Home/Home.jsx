@@ -6,7 +6,6 @@ const Home = () => {
   const { toast } = useToast();
 
   const { data: books, isLoading, error } = useGetAllBooksQuery();
-  console.log(error);
 
   if (isLoading) {
     return (

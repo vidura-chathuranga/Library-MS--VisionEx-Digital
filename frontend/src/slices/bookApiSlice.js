@@ -17,7 +17,14 @@ export const bookApiSlice = apiSlice.injectEndpoints({
       keepUnusedDataFor: 5,
       providesTags: ["books"],
     }),
+    deleteBook: builder.mutation({
+      query: (bookId) => ({
+        url: `${BOOKS_URL}/${bookId}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["books"],
+    }),
   }),
 });
 
-export const { useGetAllBooksQuery, useGetBookByIdQuery } = bookApiSlice;
+export const { useGetAllBooksQuery, useGetBookByIdQuery,useDeleteBookMutation } = bookApiSlice;

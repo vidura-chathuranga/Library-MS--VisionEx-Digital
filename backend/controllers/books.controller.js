@@ -51,7 +51,20 @@ const updateBookDetails = async (req, res) => {
 // @route DELETE /api/books/:id
 // @access public
 const deleteBook = async (req, res) => {
-  console.log("Delete book details");
+  const { id } = req.params;
+
+  try {
+    const deletedBook = await Book.findByIdAndDelete(id);
+
+    if (deletedBook) {
+      res.status(200).json({ message: "Book deleted successfully" });
+    } else {
+      throw new Error("Resource not found");
+    }
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).json(error.message);
+  }
 };
 
 export {
