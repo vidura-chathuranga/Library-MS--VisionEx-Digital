@@ -8,12 +8,15 @@ import Home from "./pages/Home/Home.jsx";
 import BookDetails from "./pages/bookDetails/BookDetails.jsx";
 import { Provider } from "react-redux";
 import store from "./store.js";
+import BookEdit from "./pages/BookEdit/BookEdit.jsx";
+
 const router = createBrowserRouter([
   {
     element: <MainLayout />,
     children: [
       { path: "/", element: <Home /> },
       { path: "/books/:id", element: <BookDetails /> },
+      {path:"/books/:id/edit",element : <BookEdit/>}
     ],
   },
 ]);

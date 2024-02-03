@@ -54,14 +54,13 @@ const BookDetails = () => {
   const handleDeleteBook = async () => {
     try {
       const res = await deleteBook(bookId).unwrap();
-      toast({ title: res.message, variant: "destructive" });
+      toast({ title: res.message });
       navigate("/");
     } catch (error) {
-      console.log(error.error);
-      console.log(error.data.message);
       toast({
         title: "Uh oh! Something went wrong.",
         description: "There was a problem with your request.",
+        variant: "destructive",
       });
     }
   };
@@ -145,7 +144,7 @@ const BookDetails = () => {
         </div>
       </section>
       <div className="my-5 flex gap-x-5">
-        <Button className="bg-green-500 px-10 hover:text-gray-50 hover:bg-green-800">
+        <Button className="bg-green-500 px-10 hover:text-gray-50 hover:bg-green-800" onClick={() => navigate(`/books/${bookId}/edit`)}>
           Edit Book
         </Button>
         <Dialog>
