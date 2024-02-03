@@ -1,15 +1,15 @@
-import Book from '../models/books.model.js';
+import Book from "../models/books.model.js";
 
 // @desc  get all existing books
 // @route GET /api/books/
 // @access public
 const getAllBooks = async (req, res) => {
-  try{
+  try {
     const books = await Book.find({});
 
     // send all the book details
     res.status(200).json(books);
-  }catch(error){
+  } catch (error) {
     res.status(500).json(error.message);
   }
 };
@@ -18,7 +18,19 @@ const getAllBooks = async (req, res) => {
 // @route GET /api/books/:id
 // @access public
 const getBookById = async (req, res) => {
-  console.log("get book by Id");
+  const { id } = req.params;
+
+  try {
+    const bookDetails = await Book.findById(id);
+
+    if (bookDetails) {
+      res.status(200).json(bookDetails);
+    } else {
+      throw new Error("Resource not found");
+    }
+  } catch (error) {
+    res.status(500).json(error.message);
+  }
 };
 
 // @desc  create new book

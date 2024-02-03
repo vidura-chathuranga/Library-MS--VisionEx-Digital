@@ -5,7 +5,14 @@ export const bookApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getAllBooks: builder.query({
       query: () => ({
-        url: '/api/books/',
+        url: `${BOOKS_URL}`,
+      }),
+      keepUnusedDataFor: 5,
+      providesTags: ["books"],
+    }),
+    getBookById: builder.query({
+      query: (bookId) => ({
+        url: `${BOOKS_URL}/${bookId}`,
       }),
       keepUnusedDataFor: 5,
       providesTags: ["books"],
@@ -13,5 +20,4 @@ export const bookApiSlice = apiSlice.injectEndpoints({
   }),
 });
 
-
-export const {useGetAllBooksQuery} = bookApiSlice;
+export const { useGetAllBooksQuery, useGetBookByIdQuery } = bookApiSlice;
