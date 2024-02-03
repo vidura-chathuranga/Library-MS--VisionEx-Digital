@@ -6,7 +6,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import MainLayout from "./layouts/main.layout.jsx";
 import Home from "./pages/Home/Home.jsx";
 import BookDetails from "./pages/bookDetails/BookDetails.jsx";
-
+import { Provider } from "react-redux";
+import store from "./store.js";
 const router = createBrowserRouter([
   {
     element: <MainLayout />,
@@ -18,8 +19,8 @@ const router = createBrowserRouter([
 ]);
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router}>
-      <App />
-    </RouterProvider>
+    <Provider store={store}>
+      <RouterProvider router={router}></RouterProvider>
+    </Provider>
   </React.StrictMode>
 );
