@@ -1,8 +1,17 @@
+import Book from '../models/books.model.js';
+
 // @desc  get all existing books
 // @route GET /api/books/
 // @access public
 const getAllBooks = async (req, res) => {
-  console.log("Get all books");
+  try{
+    const books = await Book.find({});
+
+    // send all the book details
+    res.status(200).json(books);
+  }catch(error){
+    res.status(500).json(error.message);
+  }
 };
 
 // @desc  get book by its id
