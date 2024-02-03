@@ -21,7 +21,7 @@ const Home = () => {
   }
   return (
     <>
-      <section className="mt-4 flex flex-wrap justify-center gap-5 items-cente m-auto">
+      <section className="my-4 m-auto">
         {books.map((b) => (
           <BookCard key={b._id} {...b} />
         ))}
