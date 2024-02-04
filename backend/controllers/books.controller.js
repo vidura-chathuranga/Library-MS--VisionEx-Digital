@@ -37,7 +37,50 @@ const getBookById = async (req, res) => {
 // @route POST /api/books/
 // @access public
 const createNewBook = async (req, res) => {
-  console.log("create new book");
+  const {
+    ISBN,
+    title,
+    author,
+    publicationYear,
+    image,
+    numOfPages,
+    location,
+    language,
+    description,
+  } = req.body;
+
+  if (
+    !ISBN ||
+    !title ||
+    !author ||
+    !publicationYear ||
+    !image ||
+    !numOfPages ||
+    !location ||
+    !language ||
+    !description
+  ) {
+    throw new Error("All fields are required");
+  }
+  try {
+    const newBook = await Book.create({
+      ISBN,
+      title,
+      author,
+      publicationYear,
+      image,
+      numOfPages,
+      location,
+      language,
+      description,
+      availableStatus: true,
+    });
+
+    res.status(200).json({ message: "Book added successfully" });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json(error.message);
+  }
 };
 
 // @desc  Update existing book details
@@ -75,7 +118,9 @@ const updateBookDetails = async (req, res) => {
     );
 
     if (editedBook) {
-      res.status(200).json({ message: `${editedBook.title} updated sucessfully` });
+      res
+        .status(200)
+        .json({ message: `${editedBook.title} updated sucessfully` });
     } else {
       throw new Error("Book not found");
     }

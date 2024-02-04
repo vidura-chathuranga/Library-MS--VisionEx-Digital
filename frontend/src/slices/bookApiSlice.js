@@ -39,6 +39,14 @@ export const bookApiSlice = apiSlice.injectEndpoints({
         body: image,
       }),
     }),
+    addNewBook: builder.mutation({
+      query: (data) => ({
+        url: `${BOOKS_URL}`,
+        method: "POST",
+        body: data,
+      }),
+      invalidatesTags: ["books"],
+    }),
   }),
 });
 
@@ -48,4 +56,5 @@ export const {
   useDeleteBookMutation,
   useUpdateBookMutation,
   useUploadBookImageMutation,
+  useAddNewBookMutation,
 } = bookApiSlice;

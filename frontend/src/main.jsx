@@ -9,6 +9,7 @@ import BookDetails from "./pages/bookDetails/BookDetails.jsx";
 import { Provider } from "react-redux";
 import store from "./store.js";
 import BookEdit from "./pages/BookEdit/BookEdit.jsx";
+import AddNewBook from "./pages/addNewBook/AddNewBook.jsx";
 
 const router = createBrowserRouter([
   {
@@ -16,7 +17,8 @@ const router = createBrowserRouter([
     children: [
       { path: "/", element: <Home /> },
       { path: "/books/:id", element: <BookDetails /> },
-      {path:"/books/:id/edit",element : <BookEdit/>}
+      { path: "/books/:id/edit", element: <BookEdit /> },
+      { path: "/books/add", element: <AddNewBook /> },
     ],
   },
 ]);
