@@ -13,7 +13,7 @@ const BookCard = (props) => {
           <CardHeader>
             <CardTitle>{props.title}</CardTitle>
           </CardHeader>
-          <CardContent className="flex flex-row gap-x-4 items-center">
+          <CardContent className="flex flex-row flex-wrap gap-4 items-center">
             <div className="flex gap-x-2 ">
               <User />
               <span>{props.author}</span>
