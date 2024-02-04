@@ -44,7 +44,44 @@ const createNewBook = async (req, res) => {
 // @route PUT /api/books/:id
 // @access public
 const updateBookDetails = async (req, res) => {
-  console.log("update book details");
+  const {
+    ISBN,
+    title,
+    author,
+    publicationYear,
+    image,
+    numOfPages,
+    location,
+    language,
+    description,
+    bookId,
+  } = req.body;
+
+  try {
+    const editedBook = await Book.findByIdAndUpdate(
+      bookId,
+      {
+        ISBN,
+        title,
+        author,
+        publicationYear,
+        image,
+        numOfPages,
+        location,
+        language,
+        description,
+      },
+      { new: true }
+    );
+
+    if (editedBook) {
+      res.status(200).json({ message: `${editedBook.title} updated sucessfully` });
+    } else {
+      throw new Error("Book not found");
+    }
+  } catch (error) {
+    res.status(500).json(error.message);
+  }
 };
 
 // @desc  delete existing book

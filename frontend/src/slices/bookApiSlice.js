@@ -1,4 +1,4 @@
-import { BOOKS_URL } from "@/constants";
+import { BOOKS_URL, UPLOAD_URL } from "@/constants";
 import { apiSlice } from "./apiSlice";
 
 export const bookApiSlice = apiSlice.injectEndpoints({
@@ -24,7 +24,28 @@ export const bookApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: ["books"],
     }),
+    updateBook: builder.mutation({
+      query: (data) => ({
+        url: `${BOOKS_URL}/${data.bookId}`,
+        method: "PUT",
+        body: data,
+      }),
+      invalidatesTags: ["books"],
+    }),
+    uploadBookImage: builder.mutation({
+      query: (image) => ({
+        url: `${UPLOAD_URL}`,
+        method: "POST",
+        body: image,
+      }),
+    }),
   }),
 });
 
-export const { useGetAllBooksQuery, useGetBookByIdQuery,useDeleteBookMutation } = bookApiSlice;
+export const {
+  useGetAllBooksQuery,
+  useGetBookByIdQuery,
+  useDeleteBookMutation,
+  useUpdateBookMutation,
+  useUploadBookImageMutation,
+} = bookApiSlice;

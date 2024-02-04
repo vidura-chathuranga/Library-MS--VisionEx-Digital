@@ -7,6 +7,7 @@ import {
   deleteBook,
 } from "../controllers/books.controller.js";
 
+
 // initialize the router
 const booksRouter = express.Router();
 
@@ -16,5 +17,6 @@ booksRouter
   .get(getBookById)
   .put(updateBookDetails)
   .delete(deleteBook);
+
 
 export default booksRouter;
