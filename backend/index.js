@@ -33,9 +33,7 @@ app.use("/api/books", BookRoutes);
 // upload routes
 app.use("/api/uploads", UploadRoutes);
 
-
 const __dirname = path.resolve("../"); //set __dirname to root directory
-
 app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
 
 // Start the server

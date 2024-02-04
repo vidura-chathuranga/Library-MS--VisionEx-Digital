@@ -123,7 +123,6 @@ const BookEdit = () => {
   };
   // handle form submit
   const onSubmit = async (data) => {
-    console.log(data);
     try {
       const res = await updateBook({ ...data, bookId }).unwrap();
 

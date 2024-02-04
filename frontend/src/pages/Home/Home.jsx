@@ -3,8 +3,6 @@ import { useGetAllBooksQuery } from "@/slices/bookApiSlice";
 import { useToast } from "@/components/ui/use-toast";
 import { LoaderIcon } from "lucide-react";
 const Home = () => {
-  const { toast } = useToast();
-
   const { data: books, isLoading, error } = useGetAllBooksQuery();
 
   if (isLoading) {
