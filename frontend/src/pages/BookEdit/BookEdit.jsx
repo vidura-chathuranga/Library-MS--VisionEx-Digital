@@ -7,7 +7,7 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Loader2, LoaderIcon } from "lucide-react";
+import { Loader2, LoaderIcon, WifiOff } from "lucide-react";
 import { format } from "date-fns";
 import { Calendar as CalendarIcon } from "lucide-react";
 import {
@@ -23,6 +23,7 @@ import { useForm, Controller } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useToast } from "@/components/ui/use-toast";
+import CustomAlert from "@/components/shared/CustomAlert";
 
 const schema = z.object({
   ISBN: z.string().min(1, { message: "ISBN is required" }),
@@ -102,7 +103,12 @@ const BookEdit = () => {
   }
 
   if (error) {
-    return <h1>{error?.error}</h1>;
+    <CustomAlert
+      variant="destructive"
+      title="Connection error"
+      description="Check your internet connection and refresh the page"
+      erorrIcon={<WifiOff />}
+    />;
   }
 
   // handle image uploading
