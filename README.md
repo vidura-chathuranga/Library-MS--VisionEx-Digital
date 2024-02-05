@@ -11,8 +11,17 @@ Live Demo : https://library-management-system-v4io.onrender.com/
 
 
 
-![Logo](https://ibb.co/HB9s9Sc)
+![Logo](https://github.com/vidura-chathuranga/Library-MS--VisionEx-Digital/blob/main/screenshots/logo.png?raw=true)
 
+# Frontend
+- React
+- Tailwind Css
+- shadcn UI
+
+# Backend
+- Nodejs
+- Expressjs
+- MongoDB
 
 ## Run Locally
 
@@ -62,5 +71,5 @@ After intalling all the dependencies, Run the entrire project in root directory 
 
 ## Screenshots
 
-![App Screenshot](https://drive.google.com/file/d/1m0d0FjwwX7sPwrX4Ym02AXpZ42xVaJBo/view?usp=drive_link)
+![App Screenshot](https://github.com/vidura-chathuranga/Library-MS--VisionEx-Digital/blob/main/screenshots/Library%20MS.png?raw=true)
 
