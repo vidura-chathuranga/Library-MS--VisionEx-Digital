@@ -7,7 +7,7 @@ const BookCard = (props) => {
   return (
     <Link to={`/books/${props._id}`}>
       <Card className="mb-3 flex  ">
-        <section className="shrink-0">
+        <section className="flex shrink-0 items-center">
           <img src={props.image} width={100} className="p-5 bg-cover" />
         </section>
         <section>

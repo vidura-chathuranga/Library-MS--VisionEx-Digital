@@ -327,7 +327,7 @@ const BookEdit = () => {
             </span>
           )}
         </div>
-        <section className="flex gap-x-3 mt-5">
+        <section className="flex gap-x-3 mt-5 mb-5">
           <Link to={`/books/${bookId}`}>
             <Button variant="outline" className="bg-red-500 text-black ">
               Cancel

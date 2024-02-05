@@ -41,8 +41,9 @@ const Home = () => {
       <div className="fixed bottom-[50px] right-[30px]">
         <AddBookFloatingIcon />
       </div>
-
-      <PaginationCustom page={data.pageNumber} pages={data.pagesCount} />
+      <div className="mb-5">
+        <PaginationCustom page={data.pageNumber} pages={data.pagesCount} />
+      </div>
     </>
   );
 };
