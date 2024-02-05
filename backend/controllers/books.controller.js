@@ -1,14 +1,25 @@
 import Book from "../models/books.model.js";
+import "dotenv/config.js";
 
 // @desc  get all existing books
 // @route GET /api/books/
 // @access public
 const getAllBooks = async (req, res) => {
+  const pageNumber = Number(req.query.pageNumber) || 1;
+  
   try {
-    const books = await Book.find({});
+    const countAllBooks = await Book.countDocuments();
+
+    const books = await Book.find({})
+      .limit(process.env.PAGE_SIZE)
+      .skip(process.env.PAGE_SIZE * (pageNumber - 1));
 
     // send all the book details
-    res.status(200).json(books);
+    res.status(200).json({
+      books,
+      pageNumber,
+      pagesCount: Math.ceil(countAllBooks / process.env.PAGE_SIZE),
+    });
   } catch (error) {
     res.status(500).json(error.message);
   }
