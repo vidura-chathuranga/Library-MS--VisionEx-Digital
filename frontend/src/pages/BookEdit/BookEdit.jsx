@@ -103,12 +103,14 @@ const BookEdit = () => {
   }
 
   if (error) {
-    <CustomAlert
-      variant="destructive"
-      title="Connection error"
-      description="Check your internet connection and refresh the page"
-      erorrIcon={<WifiOff />}
-    />;
+    return (
+      <CustomAlert
+        variant="destructive"
+        title="Connection error"
+        description="Check your internet connection and refresh the page"
+        erorrIcon={<WifiOff />}
+      />
+    );
   }
 
   // handle image uploading
