@@ -173,7 +173,7 @@ const BookDetails = () => {
                 account and remove your data from our servers.
               </DialogDescription>
             </DialogHeader>
-            <div className="flex justify-end gap-4">
+            <div className="flex justify-end gap-4 mb-5">
               <>
                 <Button
                   type="button"
