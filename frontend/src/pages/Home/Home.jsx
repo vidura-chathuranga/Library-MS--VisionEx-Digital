@@ -1,9 +1,10 @@
 import BookCard from "@/components/shared/BookCard";
 import { useGetAllBooksQuery } from "@/slices/bookApiSlice";
-import { LoaderIcon } from "lucide-react";
+import { LoaderIcon, WifiOff } from "lucide-react";
 import AddBookFloatingIcon from "@/components/shared/addBookFloatingIcon";
 import { useNavigate, useParams } from "react-router-dom";
 import PaginationCustom from "@/components/shared/PaginationCustom";
+import CustomAlert from "@/components/shared/CustomAlert";
 const Home = () => {
   // get the page number from URL params
   const { pageNumber } = useParams();
@@ -21,13 +22,20 @@ const Home = () => {
   }
 
   if (error) {
-    return <h1>{error?.error}</h1>;
+    return (
+      <CustomAlert
+        variant="destructive"
+        title="Connection error"
+        description="Check your internet connection and refresh the page"
+        erorrIcon={<WifiOff />}
+      />
+    );
   }
 
   const handleOnClick = () => {
     navigate("/books/add");
   };
-  console.log(data);
+
   return (
     <>
       <section className="my-4 m-auto">
