@@ -35,9 +35,8 @@ const schema = z.object({
     z.record(z.unknown()),
   ]),
   numOfPages: z
-    .number()
-    .positive("Number of pages should be positive")
-    .min(1, { message: "Number of pages is required" }),
+    .string()
+    .refine((value) => parseInt(value) > 0, { message: "Invalid page number" }),
   location: z.string().min(1, { message: "location is required" }),
   language: z.string().min(1, { message: "Language is required" }),
   description: z.string().min(10, { message: "Description is required" }),
