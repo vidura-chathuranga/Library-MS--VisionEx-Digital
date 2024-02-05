@@ -9,7 +9,7 @@ const calculateWindowSize = () => {
     height,
   };
 };
-const AddBookFloatingIcon = ({ onClick }) => {
+const AddBookFloatingIcon = () => {
   const [windowDimensions, setWindowDimensions] = useState(
     calculateWindowSize()
   );
