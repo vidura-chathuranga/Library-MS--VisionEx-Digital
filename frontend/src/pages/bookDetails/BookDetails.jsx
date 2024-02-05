@@ -12,6 +12,7 @@ import {
   LoaderIcon,
   MapPin,
   User,
+  WifiOff,
   X,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -26,6 +27,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import CustomAlert from "@/components/shared/CustomAlert";
 
 const BookDetails = () => {
   const { id: bookId } = useParams();
@@ -47,7 +49,14 @@ const BookDetails = () => {
   }
 
   if (error) {
-    return <h1>{error?.error}</h1>;
+    return (
+      <CustomAlert
+        variant="destructive"
+        title="Connection error"
+        description="Check your internet connection and refresh the page"
+        erorrIcon={<WifiOff />}
+      />
+    );
   }
 
   // handle delete book
@@ -144,7 +153,10 @@ const BookDetails = () => {
         </div>
       </section>
       <div className="my-5 flex gap-x-5">
-        <Button className="bg-green-500 px-10 hover:text-gray-50 hover:bg-green-800" onClick={() => navigate(`/books/${bookId}/edit`)}>
+        <Button
+          className="bg-green-500 px-10 hover:text-gray-50 hover:bg-green-800"
+          onClick={() => navigate(`/books/${bookId}/edit`)}
+        >
           Edit Book
         </Button>
         <Dialog>
