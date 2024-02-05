@@ -1,5 +1,8 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { useAddNewBookMutation, useUploadBookImageMutation } from "@/slices/bookApiSlice";
+import {
+  useAddNewBookMutation,
+  useUploadBookImageMutation,
+} from "@/slices/bookApiSlice";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -25,7 +28,9 @@ const schema = z.object({
   author: z.string().min(1, { message: "Author is required" }),
   publicationYear: z.date(),
   image: z.string().min(1),
-  numOfPages: z.string().min(1,{message : "Number of pages should be more than 1"}),
+  numOfPages: z
+    .string()
+    .refine((value) => parseInt(value) > 0, { message: "Invalid page number" }),
 
   location: z.string().min(1, { message: "location is required" }),
   language: z.string().min(1, { message: "Language is required" }),
@@ -39,7 +44,7 @@ const AddNewBook = () => {
   const [uploadImage] = useUploadBookImageMutation();
 
   // add book mutaion
-  const[addNewBook] = useAddNewBookMutation();
+  const [addNewBook] = useAddNewBookMutation();
 
   const {
     register,
